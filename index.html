@@ -1,0 +1,1443 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陳睿凱｜中小企業法務與商業架構顧問 — 中小企業主最好的夥伴</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            techblue: {
+              DEFAULT: '#005B96',
+              light: '#4f8fc1',
+              dark: '#003b63',
+              glow: 'rgba(0, 91, 150, 0.15)'
+            },
+            deepnavy: {
+              DEFAULT: '#1F3C5A',
+              light: '#435b73',
+              dark: '#132633'
+            },
+            smartteal: {
+              DEFAULT: '#00A7A0',
+              light: '#66cfc9',
+              dark: '#00786e'
+            },
+            sustainable: {
+              DEFAULT: '#63B85B',
+              light: '#8fd48a',
+              dark: '#3f7d36'
+            },
+            innovation: {
+              DEFAULT: '#F5C542',
+              light: '#f7d779',
+              dark: '#b58a23'
+            },
+            energy: {
+              DEFAULT: '#FF8A3D',
+              light: '#ffb07a',
+              dark: '#cc5f1f'
+            },
+            premiumpurple: {
+              DEFAULT: '#5B6773',
+              light: '#7b8890',
+              dark: '#373f45'
+            },
+            mintgreen: {
+              DEFAULT: '#00A7A0',
+              light: '#66cfc9',
+              dark: '#00786e',
+              glow: 'rgba(0, 167, 160, 0.2)'
+            },
+            slate: {
+              950: '#22313F'
+            },
+            snow: '#F8FAFC',
+            mist: '#E8EEF3',
+            graphite: '#5B6773',
+            ink: '#22313F'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Lucide Icons via CDN if needed, but we use pure SVGs for perfect speed and sharpness -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* 微弱浮動與漸層背景光效 */
+    .bg-gradient-radial {
+      background: radial-gradient(circle, var(--tw-gradient-stops));
+    }
+    
+    /* 玻璃擬態卡片 */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px 0 rgba(0, 91, 150, 0.04);
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    /* 細緻漸層邊框與 Hover 上浮 */
+    .premium-hover-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .premium-hover-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(135deg, transparent, transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+    .premium-hover-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -15px rgba(0, 91, 150, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .premium-hover-card:hover::before {
+      background: linear-gradient(135deg, #005B96, #00A7A0);
+    }
+
+    /* 細緻 AI 網格背景 */
+    .tech-grid-bg {
+      background-image: 
+        linear-gradient(rgba(0, 91, 150, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 167, 160, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* 自訂打字機游標動畫 */
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .typewriter-cursor {
+      border-right: 2px solid #005B96;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    /* 進場動畫 class */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 漸層文字 */
+    .text-gradient {
+      background: linear-gradient(135deg, #1e293b 30%, #005B96 70%, #00A7A0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-purple-blue {
+      background: linear-gradient(135deg, #005B96 0%, #00A7A0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 自訂流動光暈動畫 */
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.5; }
+      50% { transform: translateY(-20px) scale(1.1); opacity: 0.7; }
+    }
+    .animate-glow-1 {
+      animation: float-glow 8s ease-in-out infinite;
+    }
+    .animate-glow-2 {
+      animation: float-glow 12s ease-in-out infinite 2s;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 font-sans relative overflow-x-hidden">
+
+  <!-- 背景 Canvas 粒子動畫 -->
+  <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- 科技感環境背景光暈 (流動、細緻) -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-radial from-blue-100/40 to-transparent blur-[120px] pointer-events-none z-0 animate-glow-1"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-radial from-purple-100/30 to-transparent blur-[150px] pointer-events-none z-0 animate-glow-2"></div>
+
+  <!-- 細緻網格層 -->
+  <div class="fixed inset-0 tech-grid-bg opacity-70 pointer-events-none z-0"></div>
+
+  <!-- 1. 網站導覽列 -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo / 品牌名 -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-techblue to-innovation flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/10 transition-transform group-hover:scale-105">
+          R
+        </div>
+        <div>
+          <span class="text-lg font-bold text-slate-900 tracking-wide block leading-none">陳睿凱</span>
+          <span class="text-[10px] text-slate-500 tracking-widest uppercase block mt-1">SME Business Advisor</span>
+        </div>
+      </a>
+
+      <!-- 桌面版選單 -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">關於陳睿凱</a>
+        <a href="#painpoints" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">核心痛點</a>
+        <a href="#services" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">服務項目</a>
+        <a href="#cases" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">實戰案例</a>
+        <a href="#methodology" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">顧問方法論</a>
+        <a href="#why-me" class="text-sm font-medium text-slate-600 hover:text-techblue transition-colors">核心優勢</a>
+      </div>
+
+      <!-- 桌面版 CTA 按鈕 -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="https://calendar.app.google/AVgeD2qvjRv7swfa6" target="_blank" rel="noopener noreferrer" 
+           class="cta-button relative inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-semibold text-techblue glass-card border border-techblue/20 transition-all duration-300 hover:border-mintgreen group overflow-hidden">
+          <span class="relative z-10 flex items-center gap-2">
+            預約諮詢
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </span>
+          <div class="absolute inset-0 bg-gradient-to-r from-techblue/5 to-innovation/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <!-- Status tag on hover -->
+          <span class="status-badge absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-slate-900 text-[10px] text-white px-2 py-0.5 rounded opacity-0 pointer-events-none transition-all duration-200 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-mintgreen animate-pulse"></span>
+            Status: Ready
+          </span>
+        </a>
+      </div>
+
+      <!-- 行動裝置漢堡按鈕 -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 行動裝置選單 (Drawer) -->
+    <div id="mobileMenu" class="md:hidden hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 py-6 px-6 shadow-xl flex flex-col gap-4">
+      <a href="#about" class="mobile-link text-base font-medium text-slate-700 py-2">關於陳睿凱</a>
+      <a href="#painpoints" class="mobile-link text-base font-medium text-slate-700 py-2">核心痛點</a>
+      <a href="#services" class="mobile-link text-base font-medium text-slate-700 py-2">服務項目</a>
+      <a href="#cases" class="mobile-link text-base font-medium text-slate-700 py-2">實戰案例</a>
+      <a href="#methodology" class="mobile-link text-base font-medium text-slate-700 py-2">顧問方法論</a>
+      <a href="#why-me" class="mobile-link text-base font-medium text-slate-700 py-2">核心優勢</a>
+      <a href="https://calendar.app.google/AVgeD2qvjRv7swfa6" target="_blank" rel="noopener noreferrer" 
+         class="w-full text-center py-3 rounded-xl bg-gradient-to-r from-techblue to-innovation text-white font-semibold shadow-lg shadow-blue-500/20">
+        立即預約諮詢
+      </a>
+    </div>
+  </nav>
+
+  <!-- 2. Hero 首頁區塊 -->
+  <section id="hero" class="min-h-screen pt-32 flex items-center relative z-10 px-6 lg:px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- 左側：標題、文案與 CTA -->
+      <div class="lg:col-span-7 flex flex-col justify-center space-y-8 text-left">
+        <!-- 狀態標籤 -->
+        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100/80 px-3.5 py-1.5 rounded-full w-fit">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-mintgreen opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-mintgreen"></span>
+          </span>
+          <span class="text-xs font-semibold tracking-wider text-techblue">SME BUSINESS ARCHITECT</span>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-slate-500 tracking-wider">中小企業主最好的夥伴</h2>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight tracking-tight">
+            協助中小企業主更好的<br class="hidden md:inline">
+            <span class="text-gradient">營運與投資</span>
+          </h1>
+        </div>
+
+        <!-- 科技感打字機效果 -->
+        <div class="h-8 flex items-center">
+          <div class="bg-slate-50 border border-slate-100 px-3.5 py-1 rounded-md">
+            <span id="typewriterText" class="text-xs md:text-sm font-mono text-slate-600 typewriter-cursor select-none"></span>
+          </div>
+        </div>
+
+        <!-- 高轉換說明文案 -->
+        <p class="text-base md:text-lg text-slate-600 max-w-2xl leading-relaxed">
+          我們不只是撰寫制式合約，更專注於為企業主釐清合作架構、規劃穩健的投資與合夥關係。協助您從根本建立權責、分潤與退場機制，降低法律與經營風險，讓每一個商業機會都成為您穩健成長的基石。
+        </p>
+
+        <!-- CTA 按鈕群 -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 items-stretch sm:items-center">
+          <a href="https://calendar.app.google/AVgeD2qvjRv7swfa6" target="_blank" rel="noopener noreferrer" 
+             id="heroCta" class="relative inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-techblue glass-card border border-techblue/30 shadow-xl shadow-blue-500/5 transition-all duration-300 hover:border-mintgreen hover:-translate-y-0.5 group overflow-hidden">
+            <span class="relative z-10 flex items-center gap-3">
+              預約 1:1 策略諮詢
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-techblue/5 to-innovation/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <!-- Status overlay on Hover -->
+            <div class="absolute bottom-1 right-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-mintgreen animate-pulse"></span>
+              <span class="text-[8px] text-slate-500 font-mono">Status: Ready to Connect</span>
+            </div>
+          </a>
+
+          <a href="#about" class="text-center px-6 py-4 rounded-xl text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">
+            瞭解更多顧問優勢
+          </a>
+        </div>
+      </div>
+
+      <!-- 右側：抽象科技流動視覺元件 (以純 CSS、SVG 與浮動粒子呈現) -->
+      <div class="lg:col-span-5 flex justify-center items-center relative h-[350px] lg:h-[500px]">
+        <!-- 核心發光環形 -->
+        <div class="absolute w-72 h-72 md:w-96 md:h-96 rounded-full border border-blue-100 bg-white/20 backdrop-blur-sm flex items-center justify-center animate-[spin_60s_linear_infinite]">
+          <!-- 內刻度線 -->
+          <div class="w-[85%] h-[85%] rounded-full border border-dashed border-blue-200 flex items-center justify-center">
+            <div class="w-[70%] h-[70%] rounded-full border border-mist flex items-center justify-center">
+                <div class="w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-techblue/10 to-innovation/10 flex items-center justify-center">
+                <!-- 核心發光點 -->
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-techblue to-innovation shadow-lg shadow-blue-500/40 flex items-center justify-center text-white font-extrabold text-sm">AI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 浮動數據卡片一 (合夥機制) -->
+        <div class="absolute top-[15%] left-[5%] glass-card p-4 rounded-2xl border border-white/60 shadow-lg animate-[bounce_5s_ease-in-out_infinite] max-w-[200px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-blue-50 rounded-lg text-techblue">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Partnership</p>
+              <h4 class="text-xs font-bold text-slate-800">股權與權責配置</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- 浮動數據卡片二 (商業合約) -->
+        <div class="absolute bottom-[15%] right-[5%] glass-card p-4 rounded-2xl border border-white/60 shadow-lg animate-[bounce_6s_ease-in-out_infinite_1s] max-w-[200px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-snow rounded-lg text-deepnavy">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Contract Risk</p>
+              <h4 class="text-xs font-bold text-slate-800">商業架構合約</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- 浮動數據卡片三 (企業數據) -->
+        <div class="absolute top-[45%] right-[-5%] glass-card p-4 rounded-2xl border border-white/60 shadow-lg animate-[bounce_7s_ease-in-out_infinite_2s] max-w-[180px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-mintgreen animate-ping"></span>
+            <span class="text-xs font-bold text-slate-700">15+ 企業輔導經驗</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 關於陳睿凱區塊 -->
+  <section id="about" class="py-24 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-techblue uppercase mb-3">ABOUT CONSULTANT</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">引領中小企業走向穩健與合規的顧問</h3>
+        <p class="mt-4 text-slate-600 text-base md:text-lg">
+          結合 15 年企業實務經驗，不只做法律上的守護者，更是推動您商業版圖健康擴張的戰略合夥人。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- 左側：個人品牌故事與介紹 -->
+        <div class="lg:col-span-7 space-y-6 reveal-on-scroll">
+          <div class="border-l-4 border-techblue pl-6 space-y-3">
+            <h4 class="text-xl font-bold text-slate-900">我是陳睿凱</h4>
+            <p class="text-slate-500 text-sm font-medium">專注於中小企業法務、商業架構規劃與合夥投資設計的企業顧問</p>
+          </div>
+
+          <p class="text-slate-600 leading-relaxed text-base">
+            我擁有 15 年的企業實務與顧問經驗，長期站在第一線協助中小企業應對合夥爭議、融資架構模糊、合約隱藏漏洞等關鍵經營問題。
+          </p>
+          <p class="text-slate-600 leading-relaxed text-base">
+            我的專業不僅在於常規的法律風險控管，更重視<strong>如何將法務思維、商業模式與利益分配機制高度整合</strong>。不論您處於「創立合夥」、「對外融資」、「品牌加盟」或「轉型升級」階段，我都能協助您建立可執行、可持續、可抗風暴的治理機制。
+          </p>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6">
+            <div class="glass-card p-4 rounded-xl border border-slate-100 text-center">
+              <span class="block text-3xl font-bold text-techblue mb-1">15+</span>
+              <span class="text-xs text-slate-500">企業實務與顧問經驗</span>
+            </div>
+            <div class="glass-card p-4 rounded-xl border border-slate-100 text-center">
+              <span class="block text-3xl font-bold text-deepnavy mb-1">100+</span>
+              <span class="text-xs text-slate-500">輔導及合約規劃案</span>
+            </div>
+            <div class="glass-card p-4 rounded-xl border border-slate-100 text-center col-span-2 md:col-span-1">
+              <span class="block text-3xl font-bold text-mintgreen mb-1">100%</span>
+              <span class="text-xs text-slate-500">客製化商業架構設計</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側：專業特質與能力點亮卡片 -->
+        <div class="lg:col-span-5 space-y-4 reveal-on-scroll">
+          <!-- 卡片 1 -->
+          <div class="glass-card p-5 rounded-2xl border border-slate-100 flex gap-4 items-start hover:shadow-md transition-shadow">
+            <div class="p-3 bg-blue-50 text-techblue rounded-xl shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <div>
+              <h5 class="font-bold text-slate-900 mb-1">中小企業法務與商業架構規劃</h5>
+              <p class="text-xs text-slate-500 leading-relaxed">深入企業基因，將實務運作流程與商業合作機制落實為制度，拒絕不合腳的制式框架。</p>
+            </div>
+          </div>
+
+          <!-- 卡片 2 -->
+          <div class="glass-card p-5 rounded-2xl border border-slate-100 flex gap-4 items-start hover:shadow-md transition-shadow">
+            <div class="p-3 bg-snow text-deepnavy rounded-xl shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h5 class="font-bold text-slate-900 mb-1">投資合夥與股權權責設計</h5>
+              <p class="text-xs text-slate-500 leading-relaxed">精準配置股權比例、表決機制、盈餘分配與退場方案，建立「能共享富貴，亦能共渡風雨」的合夥機制。</p>
+            </div>
+          </div>
+
+          <!-- 卡片 3 -->
+          <div class="glass-card p-5 rounded-2xl border border-slate-100 flex gap-4 items-start hover:shadow-md transition-shadow">
+            <div class="p-3 bg-emerald-50 text-mintgreen rounded-xl shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <div>
+              <h5 class="font-bold text-slate-900 mb-1">商業合約與長期風險控管</h5>
+              <p class="text-xs text-slate-500 leading-relaxed">撰寫真正貼合商業意圖的客製化合約，預埋防禦條款，將潛在糾紛成本降到最低。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 核心痛點區塊 -->
+  <section id="painpoints" class="py-24 bg-slate-50/50 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-deepnavy uppercase mb-3">SME PAIN POINTS</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">合作路上，您是否也正遭遇這些隱憂？</h3>
+        <p class="mt-4 text-slate-500 text-base">人情和信任是開始的起點，但只有清楚的制度與架構，才能保障走得長遠。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 痛點 1 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">01</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">合作開始很順利，但權責與分工越來越模糊？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              因「信任」而攜手，卻因「日常權責不清」而內耗。缺乏白紙黑字的崗位權責劃分，最後往往導致多頭馬車，互推責任。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：依賴人情，缺乏約束力
+          </div>
+        </div>
+
+        <!-- 痛點 2 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">02</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">出資、分潤、股權與決策權沒有事先說清楚？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              技術股出多少？資金股分多少？股權比例大，決策權就必然大嗎？出資與分潤規則混為一談，最容易在公司賺錢後爆發股權爭奪糾紛。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：利益分配機制缺失
+          </div>
+        </div>
+
+        <!-- 痛點 3 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">03</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">合約看似完整，卻沒有反映真實商業風險？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              套用網路模板合約，條文洋洋灑灑卻無法在真實業務中保護您。沒有針對實際交付流程、智財權歸屬與違約責任做客製化設計。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：合約與商業模式脫節
+          </div>
+        </div>
+
+        <!-- 痛點 4 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">04</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">投資或合夥，事前無建立清楚的退場機制？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              合作終止、理念不合、合夥人突然想抽資該如何處理？沒有明定股權收購、估值計算與爭議解決機制，導致合作生變時兩敗俱傷。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：無緩衝的硬性對立風暴
+          </div>
+        </div>
+
+        <!-- 痛點 5 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">05</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">企業規模擴張，內部制度完全跟不上營運速度？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              業務量與團隊擴大了，管理卻仍停留在小作坊模式。缺乏加盟授權、採購管理、員工競業禁止與資安智財保護等規範。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：管理制度斷層與失控
+          </div>
+        </div>
+
+        <!-- 痛點 6 -->
+        <div class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center font-bold text-xl mb-6">06</div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">過度仰賴口頭承諾，關係終止時引發巨大法律糾紛？</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              「大家都是朋友，口頭講好就好」是一顆定時炸彈。一旦利益衝突發生，當初沒寫進合約裡的口頭協議，都無法成為有效的法律依據。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-red-400 font-semibold flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            危機指標：人情承諾的高昂訴訟成本
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 服務項目區塊 -->
+  <section id="services" class="py-24 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-techblue uppercase mb-3">OUR SERVICES</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">核心服務：中小企業商業規劃與投資</h3>
+        <p class="mt-4 text-slate-600 text-base md:text-lg">
+          中小企業在創業、轉型或擴張時，最關鍵的不是只有資金投入，而是能否在投資前建立清楚的商業邏輯、合作架構與風險控管機制。
+        </p>
+        <p class="mt-2 text-sm text-slate-500">
+          我協助企業主、創業團隊與投資合作方，從 0 到 1 梳理營運模式、資源配置、合作條件與未來發展路徑，讓每一次投入都更有方向。
+        </p>
+      </div>
+
+      <!-- 8個服務細項卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 服務 1 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-blue-50 text-techblue flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">商業營運規劃</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              診斷當前業務流程與獲利結構，規劃符合市場邏輯的商務營運框架，奠定穩健的日常營運機制。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 2 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-snow text-deepnavy flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">投資合夥評估</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              對內與對外投資前置評估，洞悉資產結構與對等條件，釐清資金背後的真正合約義務與責任邊界。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 3 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-mintgreen flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">股權與權責安排</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              專業架構設計，規劃最適合的表決權分佈、技術股配比與經營治理權限，徹底預防合夥人內訌。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 4 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-blue-50 text-techblue flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">合作契約設計</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              杜絕合約範本，從交易流程出發，為您量身撰寫防禦力高、權責分明且具法律實戰保障力的合約。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 5 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-snow text-deepnavy flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">法務風險評估</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              對現有的內部規章、勞資關係與對外合約進行全盤健檢，及早抓出隱蔽漏洞並予以修正。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 6 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-mintgreen flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">分潤與退場機制設計</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              明定經營獲利分配模式與夥伴退場估值收購標準，讓合夥關係即便結束也能好聚好散。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 7 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-blue-50 text-techblue flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">加盟與合作模式規劃</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              為連鎖總部或加盟體系設計授權模式、採購綁定合約與違約處理規範，保護品牌核心資產。
+            </p>
+          </div>
+        </div>
+
+        <!-- 服務 8 -->
+        <div class="premium-hover-card glass-card p-6 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-snow text-deepnavy flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-2">企業制度化顧問</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              陪伴企業進行內部制度重整與成長轉型，透過架構優化，賦能企業具備邁向中大型規模的資質。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 實戰案例區塊 -->
+  <section id="cases" class="py-24 bg-slate-50/50 relative z-10 px-6 lg:px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-deepnavy uppercase mb-3">PRACTICAL CASES</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">實戰場景分析</h3>
+        <p class="mt-4 text-slate-500 text-base">以下為代表性的情境式案例，展示如何將商業機會與利益轉化為安全的實體架構。</p>
+      </div>
+
+      <div class="space-y-12 max-w-5xl mx-auto">
+        
+        <!-- 案例 1 -->
+        <div class="glass-card rounded-2xl border border-slate-100 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center reveal-on-scroll premium-hover-card">
+          <div class="w-full md:w-1/3 text-left">
+            <span class="text-xs font-bold text-techblue tracking-widest uppercase block mb-2">SCENARIO ONE</span>
+            <h4 class="text-xl font-bold text-slate-900">合夥創業前的股權與分工設計</h4>
+            <div class="mt-4 w-12 h-1 bg-gradient-to-r from-techblue to-innovation"></div>
+          </div>
+          <div class="w-full md:w-2/3 text-left space-y-4">
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>背景情境：</strong> 幾位創始夥伴帶著熱情與不同專長準備合資成立新創公司，然而出資多的人並非全職投入，技術開發與日常營運主要落在出資少的人身上。
+            </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>解決策略：</strong> 協助團隊在正式成立公司前，全面釐清資金股與技術股比例，規劃董事會表決機制與重大決策門檻，並擬定日常執行長權限。此外，明定「按服務年資逐步賦權股權」的 Vesting 機制，並設計好退場合夥人股份收購溢價算法，避免未來的認知落差。
+            </p>
+            <div class="inline-flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-lg text-xs font-bold text-techblue">
+              結構化合夥機制・保護創始團隊
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 2 -->
+        <div class="glass-card rounded-2xl border border-slate-100 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center reveal-on-scroll premium-hover-card">
+          <div class="w-full md:w-1/3 text-left">
+            <span class="text-xs font-bold text-deepnavy tracking-widest uppercase block mb-2">SCENARIO TWO</span>
+            <h4 class="text-xl font-bold text-slate-900">投資合作前的風險評估</h4>
+            <div class="mt-4 w-12 h-1 bg-gradient-to-r from-innovation to-techblue"></div>
+          </div>
+          <div class="w-full md:w-2/3 text-left space-y-4">
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>背景情境：</strong> 一家實力雄厚的傳產投資方準備挹注大筆資金給一家新興科技軟體公司，企圖將其技術整合進自己的供應鏈中，但雙方文化、預期交付與成果評價標準差距極大。
+            </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>解決策略：</strong> 協助投資方與經營團隊雙向梳理最符合商業邏輯的「資金用途檢核機制」，將投資協議與階段性交付里程碑（Milestones）深度綁定。設計明確的優先認股權、股東知情權與反稀釋條款，為投資案拉起一條可以被量化與管理的風險紅線。
+            </p>
+            <div class="inline-flex items-center gap-2 bg-snow px-3 py-1 rounded-lg text-xs font-bold text-deepnavy">
+              Milestone 投資對接・資金風險控制
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 3 -->
+        <div class="glass-card rounded-2xl border border-slate-100 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center reveal-on-scroll premium-hover-card">
+          <div class="w-full md:w-1/3 text-left">
+            <span class="text-xs font-bold text-mintgreen tracking-widest uppercase block mb-2">SCENARIO THREE</span>
+            <h4 class="text-xl font-bold text-slate-900">加盟與合作模式調整</h4>
+            <div class="mt-4 w-12 h-1 bg-gradient-to-r from-mintgreen to-techblue"></div>
+          </div>
+          <div class="w-full md:w-2/3 text-left space-y-4">
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>背景情境：</strong> 某知名連鎖餐飲品牌在開放全台加盟後，面臨部分加盟商私自採購非原廠原料、甚至擅自仿製相似品項推出新菜單，侵害總部商標與品牌一致性。
+            </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              <strong>解決策略：</strong> 重新檢視並客製化設計加盟授權合約，健全「商標及商標使用權範圍」、「原物料統購與品質稽核條款」，加強智慧財產權條款保護力。同時增設比例合宜的懲罰性違約金與限期改善終止條款，令加盟體系重新回歸總部的品牌標準運營常軌。
+            </p>
+            <div class="inline-flex items-center gap-2 bg-emerald-50 px-3 py-1 rounded-lg text-xs font-bold text-mintgreen">
+              品牌核心智財權保障・加盟秩序重建
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 方法論區塊 (4步流程) -->
+  <section id="methodology" class="py-24 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-techblue uppercase mb-3">METHODOLOGY</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">顧問方法論</h3>
+        <p class="mt-4 text-slate-500 text-base">從商業機會到可執行架構，我以結構化思維為您的商業安全保駕護航。</p>
+      </div>
+
+      <!-- 四步流程進度條式卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+        <!-- 背景連接線 (僅在桌面版顯示) -->
+        <div class="hidden md:block absolute top-[40px] left-[12%] right-[12%] h-[1.5px] bg-gradient-to-r from-techblue/20 via-premiumpurple/20 to-mintgreen/20 -z-10"></div>
+
+        <!-- 步驟 1 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center relative reveal-on-scroll hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-blue-50 text-techblue flex items-center justify-center font-extrabold text-lg mb-6 shadow-sm border border-blue-100">01</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">釐清商業目標</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            了解企業目前所處階段、合作目的、資源條件與預期成長方向。從本質上看清商業意圖，避免南轅北轍。
+          </p>
+        </div>
+
+        <!-- 步驟 2 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center relative reveal-on-scroll hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-snow text-deepnavy flex items-center justify-center font-extrabold text-lg mb-6 shadow-sm border border-mist">02</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">分析合作投資風險</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            深度解剖權責劃分、資金、股權、分潤、未來決策機制與潛在法律風險。找出結構中可能爆發的漏洞。
+          </p>
+        </div>
+
+        <!-- 步驟 3 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center relative reveal-on-scroll hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-emerald-50 text-mintgreen flex items-center justify-center font-extrabold text-lg mb-6 shadow-sm border border-emerald-100">03</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">設計合約與治理架構</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            將前期共識與防禦策略落實為具備執行力、可量化管理、可追蹤的正式合約文本與內部治理規範。
+          </p>
+        </div>
+
+        <!-- 步驟 4 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center relative reveal-on-scroll hover:shadow-lg transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-blue-50 text-techblue flex items-center justify-center font-extrabold text-lg mb-6 shadow-sm border border-blue-100">04</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">建立長期調整機制</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            為未來可能遇到的經營變局，預先規劃爭議解決路徑、股東退出條件、出讓定價規則，維持企業彈性。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 為什麼選我區塊 -->
+  <section id="why-me" class="py-24 bg-slate-50/50 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-techblue uppercase mb-3">WHY ME</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">為什麼陳睿凱是您的首選商業顧問？</h3>
+        <p class="mt-4 text-slate-500 text-base">我不只是一名解決文書工作的常規法律工作者，更是懂市場、懂商業運行的架構專家。</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- 左側：多維度專業與背景徽章 -->
+        <div class="lg:col-span-5 space-y-6 reveal-on-scroll">
+          <div class="glass-card p-8 rounded-2xl border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full"></div>
+            <h4 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <svg class="w-5 h-5 text-techblue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+              專業顧問資質
+            </h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-techblue mt-2 shrink-0"></span>
+                <div>
+                  <p class="font-semibold text-slate-800 text-sm">智慧財產法律研究所背景</p>
+                  <p class="text-xs text-slate-500">深厚的智慧財產權與商標保護法律知識背景。</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-premiumpurple mt-2 shrink-0"></span>
+                <div>
+                  <p class="font-semibold text-slate-800 text-sm">國際企業管理師雙資質</p>
+                  <p class="text-xs text-slate-500">擁有企業戰略眼光，深入剖析業務流程與資源管理。</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-mintgreen mt-2 shrink-0"></span>
+                <div>
+                  <p class="font-semibold text-slate-800 text-sm">國際行銷管理師執照</p>
+                  <p class="text-xs text-slate-500">兼具市場推廣與定位思維，規劃利於商機拓展的合規方案。</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-slate-400 mt-2 shrink-0"></span>
+                <div>
+                  <p class="font-semibold text-slate-800 text-sm">15 年企業一線顧問經驗</p>
+                  <p class="text-xs text-slate-500">累積大量中小企業第一手案源實戰，深知業主的心聲與隱憂。</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 右側：三大核心定位點對比說明 -->
+        <div class="lg:col-span-7 space-y-6 reveal-on-scroll">
+          <div class="space-y-4">
+            <!-- 優勢 1 -->
+            <div class="p-6 bg-white/60 border border-slate-100 rounded-2xl flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-blue-50 text-techblue flex items-center justify-center shrink-0 font-bold text-sm">✓</div>
+              <div>
+                <h5 class="font-bold text-slate-900 text-base mb-1">不只看合約條文，更看合約背後的商業邏輯</h5>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  多數常規法律人員僅聚焦文字是否符合公版，而忽視了交易背後夥伴之間的真實資源博弈與業務履行細節。我會將合約條文無縫對接至您的商模運作中。
+                </p>
+              </div>
+            </div>
+
+            <!-- 優勢 2 -->
+            <div class="p-6 bg-white/60 border border-slate-100 rounded-2xl flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-snow text-deepnavy flex items-center justify-center shrink-0 font-bold text-sm">✓</div>
+              <div>
+                <h5 class="font-bold text-slate-900 text-base mb-1">能協助企業把複雜的合作關係變簡單，並提前看見潛在風險</h5>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  將繁複的公司法與民事合約條款精煉化、架構圖形化，讓夥伴們對合資協議、分潤標準及退出路徑一目了然，將隱患消滅在簽字落筆之前。
+                </p>
+              </div>
+            </div>
+
+            <!-- 優勢 3 -->
+            <div class="p-6 bg-white/60 border border-slate-100 rounded-2xl flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-emerald-50 text-mintgreen flex items-center justify-center shrink-0 font-bold text-sm">✓</div>
+              <div>
+                <h5 class="font-bold text-slate-900 text-base mb-1">將商業機會轉化為可執行、可管理、可持續的發展架構</h5>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  我們的願景是透過顧問機制的建構，讓企業從純粹人情依賴，轉變為依託制度與合約自動前行的良性組織，這才是能抗禦外部風暴的真正資本。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 核心產品與技術解決方案區塊 -->
+  <section id="solutions" class="py-24 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-mintgreen uppercase mb-3">CORE PRODUCTS & SOLUTIONS</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">核心產品與技術解決方案</h3>
+        <p class="mt-4 text-slate-600 text-base md:text-lg">
+          與我合作的企業與創業家所使用的核心技術與課程平臺
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- 解決方案 1: Vibe Coding -->
+        <a href="https://courses.taiwanmds.com/product/information?p=02c0c7b9ec7b11f0b3480242ac110002" target="_blank" rel="noopener noreferrer" class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll transition-all duration-300 hover:shadow-lg group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-blue-50 text-techblue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-book-open text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">Vibe Coding：行銷數據分析學習圈</h4>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              訂閱Vibe Coding行銷數據分析學習圈，跟著我們一同走入行銷數據分析與vibe coding自動化的世界
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-techblue font-semibold text-sm group-hover:gap-3 transition-all">
+            <span>立即訪問</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 解決方案 2: 保險機器人 -->
+        <a href="https://judgai.com/" target="_blank" rel="noopener noreferrer" class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll transition-all duration-300 hover:shadow-lg group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-snow text-deepnavy flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-shield text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">保險機器人：當經驗成為奇點，AI更是保險未來的引擎</h4>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              從經驗、法條到正確說明，奇點讓每位保險專業者擁有一位懂法的科技夥伴。
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-deepnavy font-semibold text-sm group-hover:gap-3 transition-all">
+            <span>立即訪問</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 解決方案 3: SayMind -->
+        <a href="https://judgai.com/saymind" target="_blank" rel="noopener noreferrer" class="premium-hover-card glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between reveal-on-scroll transition-all duration-300 hover:shadow-lg group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-emerald-50 text-mintgreen flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-microphone text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 mb-3">SayMind：一站式語音轉錄，AI 筆記整理，自動口條訓練</h4>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              使用 LangChain 搭建的 RAG 系統，可上傳 PDF 並進行精準問答。
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-mintgreen font-semibold text-sm group-hover:gap-3 transition-all">
+            <span>立即訪問</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 多元社群圖示配置區塊 -->
+  <section id="social" class="py-24 bg-slate-50/50 relative z-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <h2 class="text-xs font-bold tracking-widest text-techblue uppercase mb-3">CONNECT WITH ME</h2>
+        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">保持聯絡</h3>
+        <p class="mt-4 text-slate-600 text-base">透過多元平台與我聯繫，享受更即時的互動與專業支持</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- 左側：社群平台圖示列表 -->
+        <div class="lg:col-span-6 reveal-on-scroll">
+          <div class="space-y-4">
+            <!-- LINE -->
+            <a href="https://line.me/ti/p/PHQPlsdgtf" target="_blank" rel="noopener noreferrer" 
+               class="glass-card p-4 rounded-xl border border-slate-100 flex items-center gap-4 hover:shadow-md hover:border-slate-200 transition-all duration-300 group">
+              <div class="w-12 h-12 rounded-lg bg-green-50 text-green-500 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <i class="fab fa-line text-2xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-slate-900 text-sm">LINE</h4>
+                <p class="text-xs text-slate-500">即時溝通與快速回應</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:contact@example.com" 
+               class="glass-card p-4 rounded-xl border border-slate-100 flex items-center gap-4 hover:shadow-md hover:border-slate-200 transition-all duration-300 group">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 text-techblue flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <i class="fas fa-envelope text-2xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-slate-900 text-sm">電子郵件</h4>
+                <p class="text-xs text-slate-500">專業諮詢與合作詢問</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
+               class="glass-card p-4 rounded-xl border border-slate-100 flex items-center gap-4 hover:shadow-md hover:border-slate-200 transition-all duration-300 group">
+              <div class="w-12 h-12 rounded-lg bg-slate-900 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <i class="fab fa-github text-2xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-slate-900 text-sm">GitHub</h4>
+                <p class="text-xs text-slate-500">技術資源與開源專案</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+               class="glass-card p-4 rounded-xl border border-slate-100 flex items-center gap-4 hover:shadow-md hover:border-slate-200 transition-all duration-300 group">
+              <div class="w-12 h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <i class="fab fa-linkedin-in text-2xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-slate-900 text-sm">LinkedIn</h4>
+                <p class="text-xs text-slate-500">專業履歷與業界互動</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 右側：QR Code 或額外資訊 -->
+        <div class="lg:col-span-6 reveal-on-scroll">
+          <div class="glass-card p-8 rounded-2xl border border-slate-100 text-center space-y-6">
+            <div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">快速聯繫</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                選擇最方便的方式與我聯繫。無論您是想討論新的商業機會、尋求法務顧問支持，或是想瞭解合作可能性，我都準備好為您服務。
+              </p>
+            </div>
+            <div class="bg-white/50 rounded-xl p-6 border border-slate-100">
+              <p class="text-xs text-slate-500 mb-3">推薦平台</p>
+              <p class="text-sm font-semibold text-slate-900">LINE 官方帳號</p>
+              <p class="text-xs text-slate-600 mt-2">最快速的即時溝通與回應保證</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 text-xs text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-mintgreen animate-pulse"></span>
+              <span>24 小時內回覆承諾</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 聯絡表單區塊 -->
+  <section id="contact-form" class="py-24 relative z-10 px-6 lg:px-8 overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <div class="glass-card rounded-3xl border border-slate-100 p-8 md:p-16 relative overflow-hidden reveal-on-scroll">
+        
+        <!-- 背景裝飾 -->
+        <div class="absolute -top-[50%] -right-[30%] w-[80%] h-[80%] rounded-full bg-gradient-radial from-mist/20 to-transparent blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-8">
+          <div class="text-center">
+            <span class="inline-flex items-center gap-2 bg-snow px-3 py-1.5 rounded-full text-xs font-semibold text-deepnavy mb-6">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              馬上填寫表單
+            </span>
+
+            <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              讓我更深入瞭解您的需求
+            </h3>
+
+            <p class="text-base text-slate-600 max-w-2xl mx-auto">
+              透過簡短的需求表單，您可以清楚地描述您目前面臨的商業挑戰、合夥困境或投資規劃需求。我會根據您的回答，為您準備最具針對性的諮詢方案。
+            </p>
+          </div>
+
+          <!-- 表單說明卡片 -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 bg-white/50 rounded-lg border border-slate-100 text-center">
+              <div class="text-2xl font-bold text-techblue mb-2">5 分鐘</div>
+              <p class="text-xs text-slate-600">完成填寫所需時間</p>
+            </div>
+            <div class="p-4 bg-white/50 rounded-lg border border-slate-100 text-center">
+              <div class="text-2xl font-bold text-deepnavy mb-2">無壓力</div>
+              <p class="text-xs text-slate-600">完全免費的初步評估</p>
+            </div>
+            <div class="p-4 bg-white/50 rounded-lg border border-slate-100 text-center">
+              <div class="text-2xl font-bold text-mintgreen mb-2">專業回應</div>
+              <p class="text-xs text-slate-600">24 小時內獲得回覆</p>
+            </div>
+          </div>
+
+          <!-- CTA 按鈕 -->
+          <div class="flex justify-center pt-4">
+            <a href="https://docs.google.com/forms/d/1lZSz3Nm-DIuSwax75aXX26_Z8C97rHqv7XNRUZu1CSs/copy" target="_blank" rel="noopener noreferrer" 
+               class="relative inline-flex items-center justify-center px-10 py-5 rounded-xl text-lg font-bold text-white bg-gradient-to-r from-innovation to-techblue shadow-2xl shadow-purple-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/30 group overflow-hidden">
+              <span class="relative z-10 flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                開始填寫需求表單
+              </span>
+              <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </a>
+          </div>
+
+          <p class="text-center text-xs text-slate-500">
+            表單提交後，我將在 24 小時內與您聯繫，討論最適合的合作方案。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. 預約諮詢 CTA 區塊 -->
+  <section id="cta" class="py-24 relative z-10 px-6 lg:px-8 overflow-hidden">
+    <!-- CTA 卡片：大器、高級科技發光 -->
+    <div class="max-w-5xl mx-auto glass-card rounded-3xl border border-blue-100 p-8 md:p-16 text-center relative overflow-hidden shadow-2xl reveal-on-scroll">
+      
+      <!-- 內部發光裝飾 -->
+      <div class="absolute -top-[50%] -left-[30%] w-[80%] h-[80%] rounded-full bg-gradient-radial from-blue-100/30 to-transparent blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-[50%] -right-[30%] w-[80%] h-[80%] rounded-full bg-gradient-radial from-purple-100/20 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto space-y-8">
+        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-techblue/10 to-innovation/10 px-4 py-1.5 rounded-full border border-blue-100">
+          <span class="w-2 h-2 rounded-full bg-mintgreen animate-pulse"></span>
+          <span class="text-xs font-semibold text-slate-700 font-mono">1-on-1 Consultation Slots Available</span>
+        </div>
+
+        <h3 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
+          讓合作、投資與企業成長，<br class="hidden sm:inline">
+          從一開始就站在<span class="text-gradient-purple-blue">穩健的架構</span>上
+        </h3>
+
+        <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+          如果您目前正在規劃合夥創業、對外引資、品牌加盟、股權分配或推動內部制度化，現在就是重新梳理權責架構與控管風險的最佳時機。透過一次高質量的深度諮詢，我們可以一起釐清目前最需要處理的關鍵節點，讓您的下一步商業決策更有底氣。
+        </p>
+
+        <div class="pt-4 flex flex-col items-center gap-4">
+          <a href="https://calendar.app.google/AVgeD2qvjRv7swfa6" target="_blank" rel="noopener noreferrer" 
+             id="ctaMainBtn" class="relative inline-flex items-center justify-center px-10 py-5 rounded-xl text-lg font-bold text-techblue glass-card border border-techblue/40 shadow-2xl shadow-blue-500/10 transition-all duration-300 hover:border-mintgreen hover:-translate-y-1 group overflow-hidden w-full sm:w-auto">
+            <span class="relative z-10 flex items-center gap-3">
+              立即預約策略諮詢
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-techblue/5 to-innovation/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <!-- Dynamic Status Badge on Hover -->
+            <div class="absolute bottom-1 right-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-mintgreen animate-pulse"></span>
+              <span class="text-[8px] text-slate-500 font-mono">Status: Ready to Connect</span>
+            </div>
+          </a>
+          <span class="text-xs text-slate-400">點擊按鈕將開啟 Google Calendar，即可選擇適合您的對談時段。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Footer 頁尾 -->
+  <footer class="bg-slate-50 border-t border-slate-100 relative z-10 py-12 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <!-- 左側品牌 -->
+      <div class="text-center md:text-left space-y-2">
+        <h4 class="text-base font-bold text-slate-900 tracking-wide">陳睿凱｜中小企業法務與商業架構顧問</h4>
+        <p class="text-xs text-slate-500">商業規劃 ｜ 投資合夥 ｜ 股權設計 ｜ 商業合約 ｜ 加盟合作</p>
+      </div>
+
+      <!-- 右側版權 -->
+      <div class="text-center md:text-right space-y-2">
+        <p class="text-xs text-slate-400">&copy; 2026 RK Chen Consulting. All rights reserved.</p>
+        <p class="text-[10px] text-slate-300 font-mono tracking-wider">SECURED &amp; STRUCTURALLY GUARANTEED</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 14. 回到頂部按鈕 -->
+  <button id="backToTopBtn" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-white/80 border border-slate-200/80 text-slate-500 hover:text-techblue hover:border-techblue shadow-lg backdrop-blur-md transition-all duration-300 translate-y-20 opacity-0">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <!-- JavaScript 段落 -->
+  <script>
+    // ----------------------------------------------------
+    // 1. 手機漢堡選單控制
+    // ----------------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        // 還原為三條線 icon
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      } else {
+        // 切換為叉叉 icon
+        hamburgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      }
+    });
+
+    // 點擊手機選單連結時，自動收合選單
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      });
+    });
+
+
+    // ----------------------------------------------------
+    // 2. 打字機效果 (Until Marketing Data science is common sense)
+    // ----------------------------------------------------
+    const typewriterElement = document.getElementById('typewriterText');
+    const textToType = "Until Marketing Data science is common sense";
+    let index = 0;
+
+    function typeWriter() {
+      if (index < textToType.length) {
+        typewriterElement.textContent += textToType.charAt(index);
+        index++;
+        setTimeout(typeWriter, 100);
+      } else {
+        // 完成後，移除閃爍游標的 CSS 動態效果，使其看起來更像一行科技感純標語
+        setTimeout(() => {
+          typewriterElement.classList.remove('typewriter-cursor');
+        }, 1500);
+      }
+    }
+
+    // 網頁載入後延遲一秒開始打字
+    window.addEventListener('load', () => {
+      setTimeout(typeWriter, 1000);
+    });
+
+
+    // ----------------------------------------------------
+    // 3. Canvas 粒子動畫 (輕量優雅，不搶眼)
+    // ----------------------------------------------------
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const maxParticles = width < 768 ? 25 : 55; // 限制數量，確保輕量化高效率
+    const particleColor = 'rgba(0, 91, 150, 0.12)';
+    const lineColor = 'rgba(0, 167, 160, 0.05)';
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 2.5 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particleColor;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      // 更新與繪製粒子
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // 繪製粒子間的連線
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 180) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    // 監聽 Resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    });
+
+    initParticles();
+    animateParticles();
+
+
+    // ----------------------------------------------------
+    // 4. 滾動進場揭露動畫 (Intersection Observer)
+    // ----------------------------------------------------
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const observerOptions = {
+      root: null,
+      threshold: 0.1, // 元素露出 10% 即觸發
+      rootMargin: "0px 0px -40px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // 觸發後即取消觀察，避免重複載入
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+
+
+    // ----------------------------------------------------
+    // 5. 導覽列滾動模糊與回到頂部按鈕
+    // ----------------------------------------------------
+    const nav = document.querySelector('nav');
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    window.addEventListener('scroll', () => {
+      // 導覽列陰影與半透明玻璃效果強度隨滾動調整
+      if (window.scrollY > 50) {
+        nav.classList.add('shadow-md', 'bg-white/95');
+        nav.classList.remove('bg-white/80');
+      } else {
+        nav.classList.remove('shadow-md', 'bg-white/95');
+        nav.classList.add('bg-white/80');
+      }
+
+      // 回到頂部按鈕顯示/隱藏
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    // 回到頂部點擊事件
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+
+    // ----------------------------------------------------
+    // 6. 導覽列微動態 Hover 與 CTA Hover Status 特效
+    // ----------------------------------------------------
+    // 滑鼠懸停 CTA 按鈕時，動態顯示 "Ready to Connect" 標籤
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    
+    ctaButtons.forEach(btn => {
+      const badge = btn.querySelector('.status-badge');
+      if (badge) {
+        btn.addEventListener('mouseenter', () => {
+          badge.classList.remove('opacity-0', 'pointer-events-none');
+          badge.classList.add('opacity-100');
+        });
+        btn.addEventListener('mouseleave', () => {
+          badge.classList.remove('opacity-100');
+          badge.classList.add('opacity-0', 'pointer-events-none');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
