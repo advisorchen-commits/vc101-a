@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI MV 製作招商｜未來影像內容製造所</title>
+  <style>
+    :root {
+      --bg: #05050a;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.16);
+      --glass: rgba(255,255,255,.08);
+      --glass-strong: rgba(255,255,255,.14);
+      --accent: #8b5cf6;
+      --accent-2: #06b6d4;
+      --gold: #ffd166;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .video-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120vw;
+      height: 67.5vw;
+      min-width: 177.78vh;
+      min-height: 100vh;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      filter: saturate(1.1) contrast(1.06) brightness(.68);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(139,92,246,.46), transparent 32%),
+        radial-gradient(circle at 82% 25%, rgba(6,182,212,.34), transparent 30%),
+        linear-gradient(120deg, rgba(0,0,0,.86) 0%, rgba(5,5,18,.58) 42%, rgba(0,0,0,.8) 100%);
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: .13;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+    }
+
+    .aurora {
+      position: fixed;
+      inset: auto -10% -28% -10%;
+      height: 48vh;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(139,92,246,.32), rgba(6,182,212,.22), rgba(255,209,102,.18));
+      filter: blur(60px);
+      transform: rotate(-2deg);
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0) rotate(-2deg) scale(1); }
+      to { transform: translateY(-32px) rotate(2deg) scale(1.08); }
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 7, 20, .45);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 80px rgba(0,0,0,.32);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 34px rgba(139,92,246,.7);
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 999px;
+      background: #fff;
+      color: #09090f;
+      font-weight: 800;
+      box-shadow: 0 8px 30px rgba(255,255,255,.18);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 124px 24px 78px;
+    }
+
+    .container {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      letter-spacing: .1em;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 rgba(255,209,102,.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,209,102,.65); }
+      70% { box-shadow: 0 0 0 13px rgba(255,209,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,209,102,0); }
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(48px, 7.2vw, 102px);
+      line-height: .94;
+      letter-spacing: -.07em;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #fff, #d8c8ff 38%, #7dd3fc 72%, #fff2b6);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.9;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      font-weight: 800;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+    }
+
+    .btn:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.38); }
+
+    .btn-primary {
+      border: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 54px rgba(6,182,212,.22), 0 18px 54px rgba(139,92,246,.25);
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,.67);
+      font-size: 14px;
+    }
+
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-row span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.78);
+    }
+
+    .glass-card {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      backdrop-filter: blur(22px);
+      box-shadow: 0 24px 90px rgba(0,0,0,.36);
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.28), transparent 38%, rgba(6,182,212,.22));
+      opacity: .7;
+      pointer-events: none;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      padding: 1px;
+    }
+
+    .investment-card {
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .tag {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    .metric {
+      margin: 26px 0;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .metric p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-item {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .mini-item b { display: block; margin-bottom: 6px; }
+    .mini-item small { color: rgba(255,255,255,.62); line-height: 1.7; }
+
+    section {
+      padding: 94px 24px;
+      position: relative;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4.5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+      max-width: 680px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 440px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      min-height: 280px;
+      padding: 26px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(16px);
+      transition: transform .25s ease, background .25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,.11);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(6,182,212,.88));
+      box-shadow: 0 18px 40px rgba(6,182,212,.18);
+      font-size: 23px;
+    }
+
+    .feature-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      letter-spacing: -.02em;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .process-main {
+      padding: 34px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(139,92,246,.22), rgba(6,182,212,.13));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .process-main h2 {
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+      margin-bottom: 18px;
+    }
+
+    .process-main p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 26px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(15px);
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .step h3 { margin-bottom: 8px; }
+    .step p { color: var(--muted); line-height: 1.75; }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .plan {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 480px;
+      padding: 28px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.075);
+      backdrop-filter: blur(16px);
+    }
+
+    .plan.featured {
+      background: linear-gradient(180deg, rgba(139,92,246,.26), rgba(255,255,255,.08));
+      border-color: rgba(255,255,255,.28);
+      transform: translateY(-12px);
+      box-shadow: 0 34px 90px rgba(139,92,246,.2);
+    }
+
+    .plan h3 { font-size: 25px; margin-bottom: 8px; }
+    .plan .price { font-size: 42px; font-weight: 900; letter-spacing: -.05em; margin: 18px 0 10px; }
+    .plan p, .plan li { color: var(--muted); line-height: 1.75; }
+    .plan ul { list-style: none; display: grid; gap: 12px; margin-top: 18px; }
+    .plan li::before { content: "✓"; color: var(--gold); margin-right: 8px; }
+
+    .cta-band {
+      margin: 40px auto 0;
+      padding: 46px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,.18);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,.34), rgba(6,182,212,.17)),
+        rgba(255,255,255,.08);
+      backdrop-filter: blur(20px);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(34px, 5vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -.06em;
+      margin-bottom: 18px;
+    }
+
+    .cta-band p {
+      max-width: 690px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 18px;
+    }
+
+    .contact-form {
+      max-width: 580px;
+      margin: 40px auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      color: rgba(255,255,255,.88);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color .22s ease, background .22s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,.34);
+      background: rgba(255,255,255,.12);
+      box-shadow: 0 0 0 3px rgba(139,92,246,.15);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,.48);
+    }
+
+    .form-group select option {
+      background: #05050a;
+      color: #fff;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      animation: fadeIn .3s ease;
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+
+    .modal-overlay.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      padding: 48px 42px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,.18);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,.22), rgba(6,182,212,.13)),
+        rgba(255,255,255,.08);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 40px 120px rgba(0,0,0,.5);
+      max-width: 480px;
+      text-align: center;
+      animation: slideUp .4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-content h3 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      letter-spacing: -.05em;
+    }
+
+    .modal-content p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 26px;
+    }
+
+    .modal-content .icon-check {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 20px 60px rgba(139,92,246,.3);
+    }
+
+    footer {
+      padding: 36px 24px 50px;
+      color: rgba(255,255,255,.54);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 26px;
+    }
+
+    @media (max-width: 900px) {
+      .nav { border-radius: 24px; align-items: flex-start; }
+      .nav-links { display: none; }
+      .hero-grid, .process { grid-template-columns: 1fr; }
+      .cards, .pricing { grid-template-columns: 1fr; }
+      .plan.featured { transform: none; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 16px; }
+      .investment-card { min-height: auto; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+      .contact-form { max-width: 100%; }
+      .modal-content { max-width: 90%; padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-bg" aria-hidden="true">
+    <iframe
+      src="https://www.youtube.com/embed/LwLXRVJvMN0?autoplay=1&mute=1&controls=0&loop=1&playlist=LwLXRVJvMN0&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+      title="AI MV Background Video"
+      frameborder="0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </div>
+  <div class="overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora"></div>
+
+  <nav class="nav">
+    <a href="#top" class="brand" aria-label="返回首頁">
+      <span class="brand-mark">AI</span>
+      <span>MV VISION LAB</span>
+    </a>
+    <div class="nav-links">
+      <a href="#value">招商亮點</a>
+      <a href="#process">製作流程</a>
+      <a href="#plans">合作方案</a>
+      <a href="#contact" class="nav-cta">預約招商簡報</a>
+    </div>
+  </nav>
+
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> AI MUSIC VIDEO INVESTMENT PROGRAM</div>
+        <h1>把音樂變成<br><span class="gradient-text">會自己招商的視覺資產</span></h1>
+        <p class="lead">
+          我們打造 AI MV 製作招商平台，結合生成式影像、音樂敘事、品牌置入與短影音擴散，協助音樂人、品牌主與投資方快速佈局下一代影像內容商機。
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">立即洽談合作 →</a>
+          <a href="#value" class="btn">查看招商模式</a>
+        </div>
+        <div class="trust-row">
+          <span>滿版影片沉浸體驗</span>
+          <span>AI 視覺量產</span>
+          <span>品牌置入招商</span>
+        </div>
+      </div>
+
+      <aside class="glass-card investment-card">
+        <div>
+          <div class="card-top">
+            <span class="tag">Content × AI × Commerce</span>
+            <span class="tag">2026 招商企劃</span>
+          </div>
+          <div class="metric">
+            <strong>3X</strong>
+            <p>以「MV 主視覺、短影音素材、品牌聯名版本」三軌內容擴散，讓一次製作延伸出多種商業化場景。</p>
+          </div>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-item">
+            <b>品牌曝光</b>
+            <small>歌曲、劇情、商品與場景自然融合。</small>
+          </div>
+          <div class="mini-item">
+            <b>製作效率</b>
+            <small>縮短概念、分鏡、視覺測試週期。</small>
+          </div>
+          <div class="mini-item">
+            <b>招商包裝</b>
+            <small>提供簡報、提案頁、合作權益設計。</small>
+          </div>
+          <div class="mini-item">
+            <b>社群轉化</b>
+            <small>輸出 Reels、Shorts、TikTok 版本。</small>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <section id="value">
+    <div class="container">
+      <div class="section-head">
+        <h2>不只是製作 MV，而是建立可招商的內容產品。</h2>
+        <p>從創意視覺到商業合作，我們把 AI MV 包裝成品牌可理解、投資方可評估、觀眾願意分享的完整專案。</p>
+      </div>
+      <div class="cards">
+        <article class="feature-card">
+          <div class="icon">✦</div>
+          <h3>高辨識度 AI 視覺</h3>
+          <p>依照歌曲情緒、藝人定位與品牌調性，打造電影感、未來感或潮流感主視覺，快速形成社群記憶點。</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon">◎</div>
+          <h3>招商權益模組化</h3>
+          <p>規劃冠名、場景置入、道具露出、聯名版本、短影音素材授權等合作模式，降低品牌決策門檻。</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon">↗</div>
+          <h3>多平台內容再利用</h3>
+          <p>一支主 MV 可延伸成預告、直式短片、花絮、廣告素材、招商簡報視覺，提高每次製作的商業價值。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container process">
+      <div class="process-main">
+        <div class="eyebrow"><span class="pulse"></span> PRODUCTION FLOW</div>
+        <h2>從一首歌到一個可銷售的影像企劃。</h2>
+        <p>我們協助完成概念定位、AI 視覺設計、招商包裝與上線擴散，讓創作不只好看，更具備商業談判力。</p>
+        <a href="#contact" class="btn btn-primary">取得合作流程表</a>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>歌曲與品牌定位</h3>
+            <p>分析歌曲風格、受眾輪廓、品牌可置入情境，先確立招商主軸與內容賣點。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>AI 視覺概念與分鏡</h3>
+            <p>建立世界觀、美術風格、角色視覺、關鍵場景與鏡頭語言，產出可供決策的視覺提案。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>招商素材與權益設計</h3>
+            <p>整理品牌露出規格、合作級距、授權範圍與預期曝光素材，形成完整招商包。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h3>製作交付與社群擴散</h3>
+            <p>完成主影片與短影音版本，搭配上線時程、社群素材與合作品牌曝光節奏。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="container">
+      <div class="section-head">
+        <h2>依照招商階段，選擇最適合的合作方案。</h2>
+        <p>可用於藝人單曲、品牌活動、產品上市、展演宣傳、IP 企劃或投資招商前期提案。</p>
+      </div>
+      <div class="pricing">
+        <article class="plan">
+          <div>
+            <span class="tag">Starter</span>
+            <div class="price">概念提案</div>
+            <p>適合初步測試市場反應與品牌招商方向。</p>
+            <ul>
+              <li>AI MV 視覺風格提案</li>
+              <li>招商頁核心文案</li>
+              <li>品牌置入方向建議</li>
+              <li>基礎短影音腳本</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn">諮詢此方案</a>
+        </article>
+        <article class="plan featured">
+          <div>
+            <span class="tag">Most Popular</span>
+            <div class="price">完整招商包</div>
+            <p>適合正式對外招商、洽談贊助與合作品牌。</p>
+            <ul>
+              <li>完整 AI MV 創意企劃</li>
+              <li>招商簡報與合作權益</li>
+              <li>影片主視覺與分鏡設計</li>
+              <li>品牌置入與聯名規劃</li>
+              <li>社群擴散素材建議</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn btn-primary">預約招商簡報</a>
+        </article>
+        <article class="plan">
+          <div>
+            <span class="tag">Enterprise</span>
+            <div class="price">聯名製作</div>
+            <p>適合品牌方、唱片公司、活動主辦與大型 IP 專案。</p>
+            <ul>
+              <li>客製化 AI MV 製作流程</li>
+              <li>多品牌合作權益設計</li>
+              <li>跨平台短影音內容包</li>
+              <li>專案型商務開發支援</li>
+              <li>年度內容合作規劃</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn">洽談企業合作</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="cta-band">
+        <div class="eyebrow"><span class="pulse"></span> BOOK A STRATEGY CALL</div>
+        <h2>讓下一支 AI MV，成為品牌與投資方看得懂的商業機會。</h2>
+        <p>留下合作需求，我們將協助評估歌曲題材、招商定位、品牌置入可能性與最適合的製作方案。</p>
+        
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="formName">您的名稱</label>
+            <input type="text" id="formName" name="name" placeholder="請輸入名稱" required />
+          </div>
+
+          <div class="form-group">
+            <label for="formEmail">聯絡信箱</label>
+            <input type="email" id="formEmail" name="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="formProjectType">合作類型</label>
+            <select id="formProjectType" name="projectType" required>
+              <option value="">-- 請選擇合作類型 --</option>
+              <option value="藝人單曲">藝人單曲</option>
+              <option value="品牌活動">品牌活動</option>
+              <option value="產品上市">產品上市</option>
+              <option value="展演宣傳">展演宣傳</option>
+              <option value="IP 企劃">IP 企劃</option>
+              <option value="投資招商">投資招商</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="formRequirement">合作需求概述</label>
+            <textarea id="formRequirement" name="requirementSummary" placeholder="請簡述您的需求或想法，協助我們快速了解您的專案..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">送出合作需求 →</button>
+        </form>
+
+        <div class="hero-actions" style="justify-content:center; margin-bottom:0; margin-top: 24px;">
+          <a class="btn" href="https://youtu.be/LwLXRVJvMN0" target="_blank" rel="noopener">觀看背景影片</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 MV VISION LAB. AI MV Production & Investment Landing Page.</div>
+      <div>AI Music Video｜Brand Placement｜Content Commerce</div>
+    </div>
+  </footer>
+
+  <!-- Hidden iframe for form submission -->
+  <iframe name="hidden_iframe" style="display:none;" title="form-submit"></iframe>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal-overlay hide">
+    <div class="modal-content">
+      <div class="icon-check">✓</div>
+      <h3>感謝您的提交！</h3>
+      <p>需求已送出，我們將盡快與您聯絡！</p>
+      <button class="btn btn-primary" style="width: 100%; border: 0;" onclick="closeModal()">回到首頁</button>
+    </div>
+  </div>
+
+  <script>
+    // Google Form Configuration
+    const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc1o9zfFiZrZ6AaJ3Yu5hVP-YW_h42ie3c-JUziqnldfUfQyQ/formResponse";
+    
+    const FORM_ENTRY_IDS = {
+      name: "entry.588998168",
+      email: "entry.476214014",
+      projectType: "entry.1610329698",
+      requirementSummary: "entry.1646642689",
+    };
+
+    // Form submission handler
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append(FORM_ENTRY_IDS.name, document.getElementById("formName").value);
+      formData.append(FORM_ENTRY_IDS.email, document.getElementById("formEmail").value);
+      formData.append(FORM_ENTRY_IDS.projectType, document.getElementById("formProjectType").value);
+      formData.append(FORM_ENTRY_IDS.requirementSummary, document.getElementById("formRequirement").value);
+
+      // Submit using fetch with no-cors mode to avoid CORS errors
+      fetch(GOOGLE_FORM_ACTION_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => {
+        // Show success modal
+        showModal();
+        // Reset form
+        document.getElementById("contactForm").reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Still show success message even if there's a CORS error
+        // (Google Forms doesn't allow CORS but the form is still submitted)
+        showModal();
+        document.getElementById("contactForm").reset();
+      });
+    });
+
+    function showModal() {
+      const modal = document.getElementById("successModal");
+      modal.classList.remove("hide");
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("successModal");
+      modal.classList.add("hide");
+      // Optional: scroll back to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Close modal when clicking overlay
+    document.getElementById("successModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Allow closing with Escape key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
